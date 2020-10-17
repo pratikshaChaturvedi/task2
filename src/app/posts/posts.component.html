@@ -1,0 +1,56 @@
+
+<h2 style="text-align: center;">
+    Task2
+</h2>
+<div>
+    <h3>
+        Add Post
+    </h3>
+    <div style="border-radius: 4px;border: 1px solid #eee;background-color: #fafafa;">
+        <label>USERID:</label>
+            <input type="number" [(ngModel)]="post.userId">
+            &nbsp;&nbsp;
+        <label>TITLE:</label>
+            <input type="text" [(ngModel)]="post.title">
+            &nbsp;&nbsp;
+        <label>BODY:</label>    
+            <input type="text" [(ngModel)]="post.body">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="submit" (click)="addPost(post)">Add New Post</button>
+    </div>
+</div>
+<br>
+<br>    
+<div>
+    <h3>
+        Posts Table
+    </h3>
+    <div *ngIf="posts.length > 0" style="border-radius: 4px;border: 1px solid #eee;background-color: #fafafa;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>UserId</th>
+                    <th>Title</th>
+                    <th>Body</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let post of posts">
+                    <td> {{ post.id }} </td>
+                    <td> <input style="width: 100px;" [(ngModel)]="post.userId"></td>
+                    <td> <input style="width: 400px;" [(ngModel)]="post.title"></td>
+                    <td> <input style="width: 500px;" [(ngModel)]="post.body"></td>
+                    <td>
+                        <button class="primary" (click)="updatePost(post)">Update</button> | 
+                        <button class="primary" (click)="deletePost(post)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="posts.length == 0">
+        <h5>No Posts Found</h5>
+    </div>
+</div>
